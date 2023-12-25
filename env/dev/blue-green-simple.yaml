@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: blue-green-simple
-  namespace: infra
+  namespace: argocd
 spec:
   # 
   project: app-dev
