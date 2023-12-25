@@ -8,7 +8,7 @@ spec:
   project: app-dev
   source:
     repoURL: https://github.com/rinakia/argocd-app.git
-    targetRevision: dev
+    targetRevision: main
     path: apps/blue-green-simple
   destination:
     server: https://kubernetes.default.svc
