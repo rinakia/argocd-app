@@ -13,4 +13,4 @@ spec:
     targetPort: http
     protocol: TCP
     name: http
-    nodePort: 30080
+    nodePort: 30180
