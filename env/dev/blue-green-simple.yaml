@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: blue-green-simple
+  namespace: argocd
+spec:
+  # 
+  project: app-dev
+  source:
+    repoURL: https://github.com/rinakia/argocd-app.git
+    targetRevision: main
+    path: apps/blue-green-simple
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apl-tada
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
