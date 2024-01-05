@@ -5,7 +5,9 @@ metadata:
   labels:
     app: bluegreen-demo
 spec:
-  type: NodePort
+  type: ClusterIP
+  # NodePort to Ingress
+  #type: NodePort
   selector:
     app: bluegreen-demo
   ports:
