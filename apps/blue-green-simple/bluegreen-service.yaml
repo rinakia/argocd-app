@@ -15,4 +15,4 @@ spec:
     targetPort: http
     protocol: TCP
     name: http
-    nodePort: 31080
+    #nodePort: 31080
