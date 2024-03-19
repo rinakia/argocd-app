@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apl-spring
+  namespace: argocd
+spec:
+  # 
+  project: app-dev
+  source:
+    repoURL: https://github.com/rinakia/argocd-app.git
+    targetRevision: main
+    path: apps/apl-spring/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apl-spring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

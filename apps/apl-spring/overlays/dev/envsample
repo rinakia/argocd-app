@@ -1,0 +1,6 @@
+
+SPRING_DATASOURCE_URL=jdbc:postgresql://dbname:5432/db
+SPRING_DATASOURCE_USERNAME=apl-user
+
+
+

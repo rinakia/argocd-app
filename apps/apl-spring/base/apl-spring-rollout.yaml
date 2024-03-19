@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: apl-spring
+  labels:
+    app: apl-spring
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: apl-spring
+  template:
+    metadata:
+      labels:
+        app: apl-spring
+    spec:
+      containers:
+      - name: apl-spring
+        image: 706357943586.dkr.ecr.ap-northeast-1.amazonaws.com/tada-spring:v0.1
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8080
+          protocol: TCP
+        resources:
+          requests:
+            memory: 2000M
+            cpu: 100m
+        volumeMounts:
+        - name: secret-store-inline
+          mountPath: "/tmp/secrets"
+          readOnly: true
+        envFrom:
+        - configMapRef:
+            name: apl-spring-config
+
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: false
+      activeService: apl-spring
+      previewService: apl-spring-preview
